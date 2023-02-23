@@ -1,4 +1,4 @@
-const CHOICES = 3; //so if we want to alter our game to, say, rock, paper, scissors, lizard, spock we can do it pretty easily
+const CHOICES = 3; //so if we want to alter our game to, say, "rock, paper, scissors, lizard, spock" we can do it pretty easily
 
 const winConditions = new Map([["rock", "scissors"], ["scissors", "paper"], ["paper", "rock"]]); 
 
@@ -6,19 +6,15 @@ console.log(winConditions)
 
 function getComputerChoice() {
     const choice = getRandomInt();
-    console.log("choice", choice);
-    console.log(Array.from(winConditions));
+
     return Array.from(winConditions)[choice][0];  
 
     function getRandomInt() {
-        console.log(CHOICES);
         return Math.floor(Math.random() * (CHOICES - 1) + 1); //bc zero indexing
     }
 }
 
 function playRound(playerSelection, computerSelection) {
-    console.log("you chose", playerSelection, "computer chose", computerSelection);
-    console.log("your selection beats", winConditions.get(playerSelection.toLowerCase()));
     if (playerSelection.toLowerCase() === computerSelection) {
         return 0;
     }
@@ -32,14 +28,13 @@ function game() {
     let wins = 0;
     let losses = 0;
 
-    while (wins + losses < 5) {
+    while (wins + losses < 5) { //if we tie, we don't count that in our number of rounds
         let playerSelection = null;
         do {
             playerSelection = prompt("Enter your choice: ");
         } while(playerSelection === null || !winConditions.has(playerSelection.toLowerCase())); //keep asking for an input until the player gives us a valid choice
 
         const computerSelection = getComputerChoice();
-        console.log("computer", computerSelection);
         const result = playRound(playerSelection, computerSelection);
 
         if (result > 0) {
