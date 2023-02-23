@@ -1,4 +1,4 @@
-const CHOICES = 3; //so if we want to alter our game to, say, rock, paper, scissors, spock we can do it easily
+const CHOICES = 3; //so if we want to alter our game to, say, rock, paper, scissors, lizard, spock we can do it pretty easily
 
 const winConditions = new Map([["rock", "scissors"], ["scissors", "paper"], ["paper", "rock"]]); 
 
@@ -25,10 +25,6 @@ function playRound(playerSelection, computerSelection) {
     function formatSelection(selection) {
         return selection.charAt(0).toUpperCase() + selection.slice(1).toLowerCase();
     }
-}
-
-function formatSelection(selection) {
-    return selection.charAt(0).toUpperCase() + selection.slice(1).toLowerCase();
 }
 
 let playerSelection = null;
