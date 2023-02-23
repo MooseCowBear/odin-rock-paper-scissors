@@ -15,13 +15,13 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection.toLowerCase() === computerSelection) {
-        return 0;
+    if (playerSelection.toLowerCase() === computerSelection) { 
+        return "tie";
     }
-    else if (winConditions.get(playerSelection.toLowerCase()) === computerSelection){
-        return 1;
+    else if (winConditions.get(playerSelection.toLowerCase()) === computerSelection){ 
+        return "win";
     }
-    return -1;
+    return "loss"; 
 }
 
 function game() {
@@ -37,11 +37,11 @@ function game() {
         const computerSelection = getComputerChoice();
         const result = playRound(playerSelection, computerSelection);
 
-        if (result > 0) {
+        if (result === "win") {
             wins ++;
             console.log("You win! " + formatSelection(playerSelection) + " beats " + formatSelection(computerSelection));
         }
-        else if (result < 0) {
+        else if (result === "loss") {
             losses ++;
             console.log("You lose! " + formatSelection(computerSelection) + " beats " + formatSelection(playerSelection));
         }
