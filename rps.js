@@ -39,18 +39,18 @@ function game() {
 
         if (result === "win") {
             wins ++;
-            console.log("You win! " + formatSelection(playerSelection) + " beats " + formatSelection(computerSelection));
+            console.log(`You win! ${formatSelection(playerSelection)} beats ${formatSelection(computerSelection)}`);
         }
         else if (result === "loss") {
             losses ++;
-            console.log("You lose! " + formatSelection(computerSelection) + " beats " + formatSelection(playerSelection));
+            console.log(`You lose! ${formatSelection(computerSelection)} beats ${formatSelection(playerSelection)}`);
         }
     }
 
     if (wins > losses) {
-        return "You win! With a score of " + wins + " to " + losses + " .";
+        return `You win! With a score of ${wins} to ${losses}.`;
     }
-    return "You lose! With a score of " + wins + " to " + losses + " .";
+    return `You lose! With a score of ${wins} to ${losses}.`;
 
     function formatSelection(selection) {
         return selection.charAt(0).toUpperCase() + selection.slice(1).toLowerCase();
