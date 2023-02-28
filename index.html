@@ -5,12 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <script src="rps.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Kumbh+Sans:wght@400;700&family=Lexend+Deca&family=Manrope:wght@500;700&family=Outfit:wght@400;700&family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
     <main>
-        <button id="rock">Rock</button>
-        <button id="Paper">Paper</button>
-        <button id="Scissors">Scissors</button>
+        <div class="text">
+            <h1>Rock, Paper, Scissors</h1>
+            <div id="result"></div>
+        </div>
+        <section class="competitors">
+            <div class="computer">
+                <h2>computer's choice</h2>
+                <div class="icon-circle rock glow"><i class="fa-solid fa-hand-back-fist"></i></div>
+                <div class="icon-circle paper"><i class="fa-solid fa-hand"></i></div>
+                <div class="icon-circle scissors"><i class="fa-solid fa-hand-scissors"></i></div>
+            </div>
+
+            <div class="button-container">
+                <h2>your choice</h2>
+                <div class ="icon-circle rock button">
+                    <div class="inner-circle">
+                        <button id="rock"><i class="fa-solid fa-hand-back-fist"></i></button>
+                    </div>
+                </div>
+                <div class ="icon-circle paper button">
+                    <div class="inner-circle">
+                        <button id="paper"><i class="fa-solid fa-hand"></i></button>
+                    </div>
+                </div>
+                <div class ="icon-circle scissors button">
+                    <div class="inner-circle">
+                        <button id="scissors"><i class="fa-solid fa-hand-scissors"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 </body>
 </html>

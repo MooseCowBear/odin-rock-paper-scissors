@@ -1,0 +1,191 @@
+:root {
+    --main: #051821;
+    --rock: #1a4645;
+    --paper: #266867;
+    --scissors: #f58800;
+    --lizard: #f8bc24;
+    --spock: #F66747;
+    --background: #fbf3f2;
+
+}
+
+/* reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+p, 
+section {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+}
+
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* end reset */
+body {
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--main);
+    background: linear-gradient(var(--main), var(--rock));
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    border-radius: 12px;
+    background-color: var(--background);
+    padding: 2em;
+    margin: 3em 5em;
+    box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, .1);
+}
+
+h1 {
+    margin: 0;
+    font-size: 3em;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 1em;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2em;
+}
+
+i {
+    font-size: 5rem;
+}
+
+button {
+    border: none;
+
+    background-color: transparent;
+}
+
+button:hover, button:focus-within {
+    cursor: pointer;
+}
+
+#rock {
+    color: var(--rock);
+}
+
+#paper {
+    color: var(--paper);
+}
+
+#scissors {
+    color: var(--scissors);
+}
+
+#result {
+    font-family: "Manrope", sans-serif;
+    font-weight: 700;
+}
+
+.computer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 20em;
+    gap: 2em;
+}
+
+.competitors {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.computer i {
+    color: white;
+}
+
+.icon-circle {
+    padding: 1.5em;
+    border-radius: 50%;
+}
+
+.rock.icon-circle {
+    background-color: var(--rock);
+}
+
+.paper.icon-circle {
+    background-color: var(--paper);
+}
+
+.scissors.icon-circle {
+    background-color: var(--scissors);
+}
+
+.glow {
+    box-shadow: 0 0 12px 12px rgba(248, 255, 83, 1);
+}
+
+.inner-circle {
+    background-color: var(--background);
+    border-radius: 50%;
+    padding: 1em;
+    /*height: 6.5em;
+    width: 6.5em;*/
+}
+
+.button-container .icon-circle.button { /* hidden when not clicked, change to appropriate color  */ 
+    background-color: transparent;
+    padding: 0.5em;
+    /*height: 8em;
+    width: 8em; --NEED TO MAKE A FLEX CONTAINER TO CENTER */ 
+}
+

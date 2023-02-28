@@ -60,6 +60,10 @@ function game() {
 //const test = game();
 //console.log("test result", test);
 
+const resultDiv = document.getElementById("result");
+let numWins = 0;
+let numLosses = 0;
+
 const buttons = document.querySelectorAll("button");
 console.log(buttons);
 for (const button of buttons) {
@@ -67,8 +71,23 @@ for (const button of buttons) {
 
     button.addEventListener("click", function() {
         console.log("button", selection, "was pressed");
-        const computerSelection = getComputerChoice();
-        const result = playRound(selection, computerSelection);
-        console.log(result, "you selected", selection, "computer selected", computerSelection);
+        if (numWins + numLosses < 5) {
+            const computerSelection = getComputerChoice();
+            const result = playRound(selection, computerSelection);
+            console.log(result, "you selected", selection, "computer selected", computerSelection);
+
+            if (result === "win") {
+                numWins += 1;
+            }
+            else if (result === "loss") {
+                numLosses += 1;
+            }
+            if ( numWins + numLosses < 5) {
+                resultDiv.innerText = `Current Score: ${numWins} / ${numWins + numLosses}`;
+            }
+            else {
+                resultDiv.innerText = `Final Score ${numWins} / ${numWins + numLosses}`;
+            }
+        }
     }); 
 }
