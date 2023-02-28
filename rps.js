@@ -57,5 +57,18 @@ function game() {
     }
 }
 
-const test = game();
-console.log("test result", test);
+//const test = game();
+//console.log("test result", test);
+
+const buttons = document.querySelectorAll("button");
+console.log(buttons);
+for (const button of buttons) {
+    const selection = button.getAttribute("id");
+
+    button.addEventListener("click", function() {
+        console.log("button", selection, "was pressed");
+        const computerSelection = getComputerChoice();
+        const result = playRound(selection, computerSelection);
+        console.log(result, "you selected", selection, "computer selected", computerSelection);
+    }); 
+}
