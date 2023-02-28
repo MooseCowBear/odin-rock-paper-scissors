@@ -98,7 +98,7 @@ h2 {
 
 .button-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     gap: 2em;
@@ -130,6 +130,14 @@ button:hover, button:focus-within {
     color: var(--scissors);
 }
 
+#lizard {
+    color: var(--lizard);
+}
+
+#spock {
+    color: var(--spock);
+}
+
 #result {
     font-family: "Manrope", sans-serif;
     font-weight: 700;
@@ -137,7 +145,7 @@ button:hover, button:focus-within {
 
 .computer {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     min-width: 20em;
@@ -145,8 +153,10 @@ button:hover, button:focus-within {
 }
 
 .competitors {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    gap: 1em;
 }
 
 .computer i {
@@ -168,6 +178,14 @@ button:hover, button:focus-within {
 
 .scissors.icon-circle {
     background-color: var(--scissors);
+}
+
+.lizard.icon-circle {
+    background-color: var(--lizard);
+}
+
+.spock.icon-circle {
+    background-color: var(--spock);
 }
 
 .inner-circle {
