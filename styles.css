@@ -170,10 +170,6 @@ button:hover, button:focus-within {
     background-color: var(--scissors);
 }
 
-.glow {
-    box-shadow: 0 0 12px 12px rgba(248, 255, 83, 1);
-}
-
 .inner-circle {
     background-color: var(--background);
     border-radius: 50%;
@@ -183,7 +179,7 @@ button:hover, button:focus-within {
 }
 
 .button-container .icon-circle.button { /* hidden when not clicked, change to appropriate color  */ 
-    background-color: transparent;
+    /*background-color: transparent;*/
     padding: 0.5em;
     /*height: 8em;
     width: 8em; --NEED TO MAKE A FLEX CONTAINER TO CENTER */ 
