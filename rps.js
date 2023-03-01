@@ -46,7 +46,7 @@ for (const button of buttons) {
     }); 
 }
 
-const closeSpan = document.getElementsByClassName("close")[0];
+const closeButton = document.getElementsByClassName("close")[0];
 
 window.onclick = function(event) {
     if (event.target == resultModal) {
@@ -54,7 +54,7 @@ window.onclick = function(event) {
       resetGame();
     }
 }
-closeSpan.onclick = function() {
+closeButton.onclick = function() {
     modal.style.display = "none"; 
     resetGame();
 }

@@ -219,6 +219,8 @@ button:hover, button:focus-within {
     float: right;
     font-size: 28px;
     font-weight: bold;
+    display: inline;
+    border: none;
   }
   
   .close:hover,
