@@ -37,7 +37,7 @@ const resultModal = document.getElementById("modal");
 
 
 const buttons = document.querySelectorAll("button");
-console.log(buttons);
+
 for (const button of buttons) {
 
     button.addEventListener("click", function(event) {
@@ -61,6 +61,9 @@ closeSpan.onclick = function() {
 function resetGame() {
     numWins = 0;
     numLosses = 0;
+    //also reset score to be blank
+    resultDiv.innerText = "Score: ";
+
 }
 
 function resetChoices(personChoice, computerChoice) {
