@@ -15,45 +15,42 @@
     <main>
         <div class="text">
             <h1>Rock, Paper, Scissors, Lizard, Spock</h1>
-            <div class="text-wrapper">
-                <p id="result">Score:</p>
-                <button id="reset">Play Again</button>
-            </div>
+            <p id="result">Score:</p>
 
         </div>
         <section class="competitors">
             <div class="computer">
                
-                <div class="icon-circle rock"><i class="fa-solid fa-hand-back-fist"></i></div>
-                <div class="icon-circle paper"><i class="fa-solid fa-hand"></i></div>
-                <div class="icon-circle scissors"><i class="fa-solid fa-hand-scissors"></i></div>
-                <div class="icon-circle lizard"><i class="fa-solid fa-hand-lizard"></i></div>
-                <div class="icon-circle spock"><i class="fa-solid fa-hand-spock"></i></div>
+                <div class="icon-circle rock"><i id="computer-rock" class="fa-solid fa-hand-back-fist"></i></div>
+                <div class="icon-circle paper"><i id="computer-paper" class="fa-solid fa-hand"></i></div>
+                <div class="icon-circle scissors"><i id="computer-scissors" class="fa-solid fa-hand-scissors"></i></div>
+                <div class="icon-circle lizard"><i id="computer-lizard" class="fa-solid fa-hand-lizard"></i></div>
+                <div class="icon-circle spock"><i id="computer-spock" class="fa-solid fa-hand-spock"></i></div>
             </div>
 
             <div class="button-container">
                
-                <div class ="icon-circle rock button">
+                <div class ="icon-circle-button rock">
                     <div class="inner-circle">
                         <button id="rock"><i class="fa-solid fa-hand-back-fist"></i></button>
                     </div>
                 </div>
-                <div class ="icon-circle paper button">
+                <div class ="icon-circle-button paper">
                     <div class="inner-circle">
                         <button id="paper"><i class="fa-solid fa-hand"></i></button>
                     </div>
                 </div>
-                <div class ="icon-circle scissors button">
+                <div class ="icon-circle-button scissors">
                     <div class="inner-circle">
                         <button id="scissors"><i class="fa-solid fa-hand-scissors"></i></button>
                     </div>
                 </div>
-                <div class ="icon-circle lizard button">
+                <div class ="icon-circle-button lizard">
                     <div class="inner-circle">
                         <button id="lizard"><i class="fa-solid fa-hand-lizard"></i></button>
                     </div>
                 </div>
-                <div class ="icon-circle spock button">
+                <div class ="icon-circle-button spock">
                     <div class="inner-circle">
                         <button id="spock"><i class="fa-solid fa-hand-spock"></i></button>
                     </div>
@@ -67,7 +64,7 @@
                 <div class="final-score-report">
                     <i id="final-score-face" class="fa-regular fa-face-smile-beam"></i>
                     <div class="inner-score-report">
-                        <h2>You Won!</h2>
+                        <h2 id="final-result">You Won!</h2>
                         <p id="final-score">With a final score of: 3 / 2</p>
                     </div>
                 </div>

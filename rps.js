@@ -1,8 +1,13 @@
-const CHOICES = 3; //so if we want to alter our game to, say, "rock, paper, scissors, lizard, spock" we can do it pretty easily
+const CHOICES = 5; 
 
-const winConditions = new Map([["rock", "scissors"], ["scissors", "paper"], ["paper", "rock"]]); 
+const winConditions = new Map([
+                        ["rock", ["scissors", "lizard"]], 
+                        ["paper", ["rock", "spock"]], 
+                        ["scissors", ["paper", "lizard"]], 
+                        ["lizard", ["paper", "spock"]],
+                        ["spock", ["rock", "scissors"]]
+                     ]); 
 
-console.log(winConditions)
 
 function getComputerChoice() {
     const choice = getRandomInt();
@@ -14,80 +19,108 @@ function getComputerChoice() {
     }
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) { 
     if (playerSelection.toLowerCase() === computerSelection) { 
         return "tie";
     }
-    else if (winConditions.get(playerSelection.toLowerCase()) === computerSelection){ 
+    else if (winConditions.get(playerSelection.toLowerCase()).includes(computerSelection)){ 
         return "win";
     }
     return "loss"; 
 }
 
-function game() {
-    let wins = 0;
-    let losses = 0;
-
-    while (wins + losses < 5) { //if we tie, we don't count that in our number of rounds
-        let playerSelection = null;
-        do {
-            playerSelection = prompt("Enter your choice: ");
-        } while(playerSelection === null || !winConditions.has(playerSelection.toLowerCase())); //keep asking for an input until the player gives us a valid choice
-
-        const computerSelection = getComputerChoice();
-        const result = playRound(playerSelection, computerSelection);
-
-        if (result === "win") {
-            wins ++;
-            console.log(`You win! ${formatSelection(playerSelection)} beats ${formatSelection(computerSelection)}`);
-        }
-        else if (result === "loss") {
-            losses ++;
-            console.log(`You lose! ${formatSelection(computerSelection)} beats ${formatSelection(playerSelection)}`);
-        }
-    }
-
-    if (wins > losses) {
-        return `You win! With a score of ${wins} to ${losses}.`;
-    }
-    return `You lose! With a score of ${wins} to ${losses}.`;
-
-    function formatSelection(selection) {
-        return selection.charAt(0).toUpperCase() + selection.slice(1).toLowerCase();
-    }
-}
-
-//const test = game();
-//console.log("test result", test);
-
 const resultDiv = document.getElementById("result");
 let numWins = 0;
 let numLosses = 0;
 
+const resultModal = document.getElementById("modal");
+
+
 const buttons = document.querySelectorAll("button");
 console.log(buttons);
 for (const button of buttons) {
-    const selection = button.getAttribute("id");
 
-    button.addEventListener("click", function() {
-        console.log("button", selection, "was pressed");
-        if (numWins + numLosses < 5) {
-            const computerSelection = getComputerChoice();
-            const result = playRound(selection, computerSelection);
-            console.log(result, "you selected", selection, "computer selected", computerSelection);
-
-            if (result === "win") {
-                numWins += 1;
-            }
-            else if (result === "loss") {
-                numLosses += 1;
-            }
-            if ( numWins + numLosses < 5) {
-                resultDiv.innerText = `Current Score: ${numWins} / ${numWins + numLosses}`;
-            }
-            else {
-                resultDiv.innerText = `Final Score ${numWins} / ${numWins + numLosses}`;
-            }
-        }
+    button.addEventListener("click", function(event) {
+        const buttonClicked = event.target.closest("button");
+        playRoundOfFive(buttonClicked);
     }); 
+}
+const closeSpan = document.getElementsByClassName("close")[0];
+
+window.onclick = function(event) {
+    if (event.target == resultModal) {
+      resultModal.style.display = "none"; 
+      resetGame();
+    }
+}
+closeSpan.onclick = function() {
+    modal.style.display = "none"; 
+    resetGame();
+}
+
+function resetGame() {
+    numWins = 0;
+    numLosses = 0;
+}
+
+function resetChoices(personChoice, computerChoice) {
+    console.log("person choice", personChoice);
+    computerChoice.style.color = "transparent";
+    personChoice.style.backgroundColor = "transparent"; 
+}
+
+function playRoundOfFive(button) {
+    console.log("button", button.id, "was pressed");
+
+    //highlight choice
+    const selection = button.id;
+    const buttonColor = window.getComputedStyle(button).color; 
+    const buttonCircle = button.closest(".icon-circle-button");
+    
+    console.log("BUTTON COLOR", buttonColor); 
+    buttonCircle.style.backgroundColor = buttonColor;
+    
+    if (numWins + numLosses < 5) {
+        const computerSelection = getComputerChoice();
+
+        const computerSelectionIcon = document.getElementById("computer-" + computerSelection);
+        computerSelectionIcon.style.color = "white";
+
+        const result = playRound(selection, computerSelection);
+        console.log(result, "you selected", selection, "computer selected", computerSelection);
+
+        if (result === "win") {
+            numWins += 1;
+        }
+        else if (result === "loss") {
+            numLosses += 1;
+        }
+        if ( numWins + numLosses < 5) {
+            resultDiv.innerText = `Score: ${numWins} / ${numWins + numLosses}`;
+        }
+        else {
+            displayResult();
+        }
+
+        //reset colors of choices after every round
+        setTimeout(function () {
+            console.log("Waited 2s");
+            resetChoices(buttonCircle, computerSelectionIcon);
+        }, 2000);
+
+    }
+}
+
+function displayResult() {
+    const finalResult = document.getElementById("final-result");
+    const finalScore = document.getElementById("final-score");
+    const finalEmoji = document.getElementById("final-score-face");
+
+    finalEmoji.classList.remove((numWins > numLosses) ? "fa-face-frown" : "fa-face-smile-beam"); //if won, remove frowny face; else remove smiley
+    finalEmoji.classList.add((numWins > numLosses) ? "fa-face-smile-beam" : "fa-face-frown"); //if won, add smiley; else frowny
+    finalResult.innerText = (numWins > numLosses) ? "You Won!" : "You Lost";
+    finalScore.innerText = `With a final score of: ${numWins} / ${numWins + numLosses}`;
+
+    //display modal 
+    resultModal.style.display = "block";
 }

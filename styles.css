@@ -159,16 +159,31 @@ button:hover, button:focus-within {
 }
 
 .computer i {
-    color: white;
+    color: transparent;
 }
 
-.icon-circle {
-
+.icon-circle, .icon-circle-button { /*set size of bigger circle, computer*/
     padding: 1.5em;
     border-radius: 50%;
 }
 
-.rock.icon-circle {
+.rock.icon-circle-button:hover, .rock.icon-circle-button:focus-within {
+    background-color: var(--rock);
+}
+.paper.icon-circle-button:hover, .paper.icon-circle-button:focus-within {
+    background-color: var(--paper);
+}
+.scissors.icon-circle-button:hover, .scissors.icon-circle-button:focus-within {
+    background-color: var(--scissors);
+}
+.lizard.icon-circle-button:hover, .lizard.icon-circle-button:focus-within {
+    background-color: var(--lizard);
+}
+.spock.icon-circle-button:hover, .spock.icon-circle-button:focus-within {
+    background-color: var(--spock);
+}
+
+.rock.icon-circle { /* gives color to the bigger circle, both computer and person */
     background-color: var(--rock);
 }
 
@@ -188,32 +203,14 @@ button:hover, button:focus-within {
     background-color: var(--spock);
 }
 
-.inner-circle {
+.inner-circle { /* set size of bigger, smaller circle person */
     background-color: var(--background);
     border-radius: 50%;
     padding: 1em;
-    /*height: 6.5em;
-    width: 6.5em;*/
 }
 
-.button-container .icon-circle.button { /* hidden when not clicked, change to appropriate color  */ 
-    /*background-color: transparent;*/
+.button-container .icon-circle-button { 
     padding: 0.5em;
-    /*height: 8em;
-    width: 8em; --NEED TO MAKE A FLEX CONTAINER TO CENTER */ 
-}
-
-.text-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.4em;
-}
-
-#reset {
-    padding: 0;
-    font-size: 0.8em;
-    border-bottom: 2px dotted black;
 }
 
 /* the modal */
@@ -232,7 +229,7 @@ button:hover, button:focus-within {
   }
 
   .modal {
-    display: block; 
+    display: none; 
     position: fixed; 
     z-index: 1; 
     left: 0;
