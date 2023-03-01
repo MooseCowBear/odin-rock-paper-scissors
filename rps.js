@@ -45,6 +45,7 @@ for (const button of buttons) {
         playRoundOfFive(buttonClicked);
     }); 
 }
+
 const closeSpan = document.getElementsByClassName("close")[0];
 
 window.onclick = function(event) {
@@ -105,7 +106,7 @@ function playRoundOfFive(button) {
             displayResult();
         }
 
-        //reset colors of choices after every round
+        //wait two seconds, then reset colors of choices after every round
         setTimeout(function () {
             console.log("Waited 2s");
             resetChoices(buttonCircle, computerSelectionIcon);
