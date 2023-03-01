@@ -15,7 +15,11 @@
     <main>
         <div class="text">
             <h1>Rock, Paper, Scissors, Lizard, Spock</h1>
-            <div id="result"></div>
+            <div class="text-wrapper">
+                <p id="result">Score:</p>
+                <button id="reset">Play Again</button>
+            </div>
+
         </div>
         <section class="competitors">
             <div class="computer">
@@ -52,6 +56,19 @@
                 <div class ="icon-circle spock button">
                     <div class="inner-circle">
                         <button id="spock"><i class="fa-solid fa-hand-spock"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="final-score-report">
+                    <i id="final-score-face" class="fa-regular fa-face-smile-beam"></i>
+                    <div class="inner-score-report">
+                        <h2>You Won!</h2>
+                        <p id="final-score">With a final score of: 3 / 2</p>
                     </div>
                 </div>
             </div>
